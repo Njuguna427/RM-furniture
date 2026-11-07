@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Richy Furniture — where comfort meets luxury. Discover sofas, chairs, coffee tables and more." />
+<title>Richy Furniture | Where Comfort Meets Luxury</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Richy Furniture home">
+      <div class="brand-mark">R</div>
+      <div><div class="brand-name">RICHY FURNITURE</div><div class="brand-tag">Where comfort meets luxury</div></div>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="active" href="#products">Products</a><a href="#about">About</a><a href="#journal">Journal</a><a href="#contact">Contact Us</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn mobile-menu" id="menuToggle" aria-label="Toggle filters">☰</button>
+      <button class="icon-btn" id="favoritesTop" aria-label="Show favorites">♡</button>
+      <button class="icon-btn" id="cartOpen" aria-label="Open shopping cart">♧<span class="count" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <h2 class="side-title">Category</h2>
+      <div class="filter-block">
+        <div class="filter-heading">Furniture</div>
+        <div class="category-list" id="categoryList">
+          <div class="category selected" data-category="All">All furniture <small>08</small></div>
+          <div class="category" data-category="Sofas">Sofas <small>03</small></div>
+          <div class="category" data-category="Chairs">Accent chairs <small>02</small></div>
+          <div class="category" data-category="Tables">Coffee & end tables <small>01</small></div>
+          <div class="category" data-category="Storage">Cabinets & storage <small>01</small></div>
+          <div class="category" data-category="Beds">Bedroom furniture <small>01</small></div>
+        </div>
+      </div>
+      <div class="filter-block">
+        <div class="filter-heading">Filter by price</div>
+        <div class="price-row"><span>Maximum price</span><strong id="priceValue">KSh 85,000</strong></div>
+        <input type="range" id="priceRange" min="5000" max="100000" step="5000" value="85000" aria-label="Maximum price"/>
+        <div class="price-labels"><span>KSh 5,000</span><span>KSh 100,000</span></div>
+      </div>
+      <div class="filter-block">
+        <div class="filter-heading">Color</div>
+        <div class="swatches" id="swatches">
+          <button class="swatch" data-color="Green" style="background:#315d50" aria-label="Green"></button>
+          <button class="swatch" data-color="Cream" style="background:#e8ddc8" aria-label="Cream"></button>
+          <button class="swatch" data-color="Grey" style="background:#92908d" aria-label="Grey"></button>
+          <button class="swatch" data-color="Black" style="background:#282828" aria-label="Black"></button>
+          <button class="swatch" data-color="Brown" style="background:#76513c" aria-label="Brown"></button>
+          <button class="swatch" data-color="Blue" style="background:#6d91a5" aria-label="Blue"></button>
+          <button class="swatch" data-color="Yellow" style="background:#e7c544" aria-label="Yellow"></button>
+        </div>
+      </div>
+      <div class="filter-block">
+        <div class="filter-heading">Style</div>
+        <div class="checks">
+          <label><input type="checkbox" value="Modern" class="styleCheck"/> Modern / contemporary</label>
+          <label><input type="checkbox" value="Minimal" class="styleCheck"/> Minimalist</label>
+          <label><input type="checkbox" value="Classic" class="styleCheck"/> Classic</label>
+          <label><input type="checkbox" value="Rustic" class="styleCheck"/> Rustic / farmhouse</label>
+        </div>
+      </div>
+      <button class="clear-btn" id="clearFilters">Clear all filters</button>
+    </aside>
+
+    <main class="content">
+      <div class="page-top">
+        <div><div class="eyebrow">Thoughtfully made for living</div><h1>Find your comfort.</h1><div class="page-desc">Furniture that brings warmth, character and comfort into your home.</div></div>
+        <div class="toolbar">
+          <label class="search" aria-label="Search furniture"><span>⌕</span><input id="searchInput" type="search" placeholder="Search furniture..."/></label>
+          <select class="sort" id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A to Z</option></select>
+        </div>
+      </div>
+
+      <section class="featured-grid" aria-label="Featured furniture">
+        <div class="hero-product">
+          <div class="hero-copy">
+            <span class="pill">Richy selection</span>
+            <h2>Designed for<br/>slow living.</h2>
+            <p>Beautifully considered pieces that make your space feel more like home.</p>
+            <div class="price">From KSh 18,500</div>
+            <div style="margin-top:16px"><button class="primary-btn" id="shopCollection">EXPLORE COLLECTION ↗</button></div>
+            <div class="hero-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="hero-image"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85" alt="Green modern sofa in a stylish living room"/></div>
+        </div>
+        <article class="featured-detail">
+          <div>
+            <div class="detail-top"><span>FEATURED PIECE</span><span class="rating">★★★★★ &nbsp; 4.9</span></div>
+            <h3>The Marta Sofa</h3><div class="muted">Richy Signature Collection</div>
+            <p class="detail-desc">A welcoming statement piece with generous cushions, timeless lines and a soft, inviting finish. Made for everyday moments and memorable gatherings.</p>
+            <div class="detail-meta"><span class="meta-chip">Premium upholstery</span><span class="meta-chip">Living room</span><span class="meta-chip">Made for comfort</span></div>
+          </div>
+          <div class="detail-bottom"><div class="price">KSh 65,000</div><button class="primary-btn" id="featuredAdd">ADD TO CART</button></div>
+        </article>
+      </section>
+
+      <section id="products">
+        <div class="section-heading"><div><h2>Explore our furniture</h2><p>Find the piece that feels just right.</p></div><div class="results-count" id="resultsCount">8 products</div></div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+      <section id="about" style="margin-top:34px;padding:23px;background:#f8f6f3;border-radius:16px">
+        <div class="eyebrow">A little about us</div><h2 style="font-family:Georgia,serif;font-weight:500;margin:0 0 8px">Comfort is personal.</h2>
+        <p style="font-size:12px;line-height:1.8;color:#8b8179;max-width:690px;margin:0">At Richy Furniture, we believe your home should reflect the way you live. Explore considered furniture for living, working and resting. Contact us for product details, delivery information or to discuss a piece for your space.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer" id="contact"><div><strong>RICHY FURNITURE</strong><div style="margin-top:5px">Where comfort meets luxury.</div></div><div id="journal">Questions or custom requests? <a href="mailto:YOUR-BUSINESS-EMAIL@example.com" style="color:var(--brown);font-weight:700">Contact our team</a><div style="margin-top:5px">© <span id="year"></span> Richy Furniture. All rights reserved.</div></div></footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Product details">
+  <div class="modal"><button class="close-modal" id="modalClose" aria-label="Close details">×</button><img id="modalImage" src="" alt=""/><div><div class="eyebrow">RICHY FURNITURE</div><h2 id="modalName"></h2><div class="muted" id="modalCategory"></div><p id="modalDescription"></p><div class="modal-price" id="modalPrice"></div><div class="detail-meta" id="modalTags"></div><button class="primary-btn" id="modalAdd">ADD TO CART</button></div></div>
+</div>
+<div class="cart-panel" id="cartPanel" aria-label="Shopping cart">
+  <div class="cart-header"><h2>Your shopping bag</h2><button class="icon-btn" id="cartClose" aria-label="Close cart">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-total"><div class="total-row"><span>Subtotal</span><span id="cartSubtotal">KSh 0</span></div><button class="primary-btn" id="checkoutBtn">ENQUIRE TO ORDER</button><p style="font-size:10px;line-height:1.6;color:#968c83">Checkout submits an order enquiry to the Richy Furniture backend. Online payments can be integrated later.</p></div>
+</div>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>

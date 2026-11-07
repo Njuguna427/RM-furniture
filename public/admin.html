@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" /><title>Richy Furniture Admin</title><link rel="stylesheet" href="css/style.css" /></head>
+<body style="background:#fff">
+<div class="adm">
+  <h1>Richy Furniture Admin</h1>
+  <div id="login"><input id="key" type="password" placeholder="Admin key" /> <button class="primary-btn" id="go">LOG IN</button> <span id="err" style="color:#b00"></span></div>
+  <div id="panel" hidden>
+    <div class="tabs"><button class="primary-btn on" id="tOrders">Orders</button><button class="primary-btn" id="tProducts">Products</button><button class="outline-btn" id="logout">Log out</button></div>
+    <section id="orders"><div class="wrap"><table><thead><tr><th>#</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th></tr></thead><tbody id="ordersBody"></tbody></table></div></section>
+    <section id="products" hidden>
+      <h2>Add / edit product</h2>
+      <form id="pForm"><input type="hidden" name="id" />
+        <div class="grid">
+          <input name="name" placeholder="Name" required /><input name="category" placeholder="Category (Sofas, Chairs, Tables, Storage, Beds)" required />
+          <input name="price" type="number" placeholder="Price KSh" required /><input name="stock" type="number" placeholder="Stock" required />
+          <input name="color" placeholder="Color" /><input name="style" placeholder="Style" />
+          <input name="tag" placeholder="Tag (e.g. New arrival)" /><input name="image_url" placeholder="Image URL" />
+          <input name="dimensions" placeholder="Dimensions" /><input name="material" placeholder="Material" />
+        </div>
+        <textarea name="description" rows="2" placeholder="Description" style="width:100%"></textarea>
+        <label><input type="checkbox" name="is_active" checked /> Visible in shop</label>
+        <div style="margin-top:8px"><button class="primary-btn" type="submit">SAVE PRODUCT</button> <button class="outline-btn" type="button" id="pReset">CLEAR</button></div>
+      </form>
+      <div class="wrap" style="margin-top:16px"><table><thead><tr><th>#</th><th>Name</th><th>Price</th><th>Stock</th><th>Visible</th><th></th></tr></thead><tbody id="productsBody"></tbody></table></div>
+    </section>
+  </div>
+</div>
+<script src="js/admin.js"></script>
+</body></html>

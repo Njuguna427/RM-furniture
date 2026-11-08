@@ -29,6 +29,25 @@ async function loadProducts() {
   productsCache = await api("products");
   $("productsBody").innerHTML = productsCache.map((p) => `<tr><td>${p.id}</td><td>${esc(p.name)}</td><td>${money(p.price)}</td><td>${p.stock}</td><td>${p.is_active ? "Yes" : "No"}</td><td><button class="outline-btn" data-edit="${p.id}">Edit</button></td></tr>`).join("");
 }
+function setPrev(u) { $("pPrev").src = u || ""; $("pPrev").hidden = !u; }
+// Shrink the photo in the browser (max 1000px, JPEG) so uploads are small and the shop stays fast
+function shrink(file, max = 1000) {
+  return new Promise((resolve, reject) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const s = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      const x = c.getContext("2d");
+      x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height);
+      x.drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      resolve(c.toDataURL("image/jpeg", 0.82).split(",")[1]);
+    };
+    img.onerror = () => reject(new Error("Could not read that image."));
+    img.src = url;
+  });
+}
 function show(tab) {
   $("orders").hidden = tab !== "orders"; $("products").hidden = tab !== "products";
   $("tOrders").classList.toggle("on", tab === "orders"); $("tProducts").classList.toggle("on", tab === "products");
@@ -49,9 +68,22 @@ $("productsBody").addEventListener("click", (e) => {
   const p = productsCache.find((x) => x.id === +e.target.dataset.edit); if (!p) return;
   const f = $("pForm");
   Object.keys(p).forEach((k) => { if (f.elements[k]) { f.elements[k].type === "checkbox" ? (f.elements[k].checked = !!p[k]) : (f.elements[k].value = p[k] ?? ""); } });
+  setPrev(f.elements.image_url.value);
   f.scrollIntoView({ behavior: "smooth" });
 });
-$("pReset").onclick = () => { $("pForm").reset(); $("pForm").elements.id.value = ""; };
+$("pReset").onclick = () => { $("pForm").reset(); $("pForm").elements.id.value = ""; setPrev(""); $("upMsg").textContent = ""; };
+$("pFile").addEventListener("change", async (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  const msg = $("upMsg");
+  if (!file.type.startsWith("image/")) { msg.textContent = "Choose an image file."; return; }
+  msg.textContent = "Uploading...";
+  try {
+    const r = await api("uploadImage", { data: await shrink(file) });
+    $("pForm").elements.image_url.value = r.url; setPrev(r.url);
+    msg.textContent = "Uploaded. Click SAVE PRODUCT to keep it.";
+  } catch (x) { msg.textContent = x.message; }
+  e.target.value = "";
+});
 $("pForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const f = e.target.elements, p = {};

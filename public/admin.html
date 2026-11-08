@@ -15,9 +15,10 @@
           <input name="name" placeholder="Name" required /><input name="category" placeholder="Category (Sofas, Chairs, Tables, Storage, Beds)" required />
           <input name="price" type="number" placeholder="Price KSh" required /><input name="stock" type="number" placeholder="Stock" required />
           <input name="color" placeholder="Color" /><input name="style" placeholder="Style" />
-          <input name="tag" placeholder="Tag (e.g. New arrival)" /><input name="image_url" placeholder="Image URL" />
+          <input name="tag" placeholder="Tag (e.g. New arrival)" /><input name="image_url" placeholder="Image URL (or use Upload photo)" />
           <input name="dimensions" placeholder="Dimensions" /><input name="material" placeholder="Material" />
         </div>
+        <div style="margin:8px 0"><label class="outline-btn" style="cursor:pointer;display:inline-block">UPLOAD PHOTO<input type="file" id="pFile" accept="image/*" hidden /></label> <span id="upMsg" style="font-size:12px"></span><br><img id="pPrev" hidden alt="Preview" style="max-height:110px;margin-top:8px;border-radius:8px" /></div>
         <textarea name="description" rows="2" placeholder="Description" style="width:100%"></textarea>
         <label><input type="checkbox" name="is_active" checked /> Visible in shop</label>
         <div style="margin-top:8px"><button class="primary-btn" type="submit">SAVE PRODUCT</button> <button class="outline-btn" type="button" id="pReset">CLEAR</button></div>
